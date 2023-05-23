@@ -1,11 +1,14 @@
 import { Link, useParams } from 'react-router-dom'
 import { useState } from 'react';
 import { retrieveHelloWorldPathVariable } from './api/HelloWorldApiService';
+import { useAuth } from './security/AuthContext';
 
 export default function WelcomeComponent(){
 
 
-    const {username} = useParams();
+    const {username} = useParams()
+
+    const authContext = useAuth()
 
     const [message, setMessage] = useState(null)
 
@@ -13,7 +16,7 @@ export default function WelcomeComponent(){
 
          console.log('called')
          
-             retrieveHelloWorldPathVariable('kevin')
+             retrieveHelloWorldPathVariable('kevin', authContext.token)
              .then(  (response) => successfulResponse(response) )
              .catch( (error) => errorResponse(error) )
              .finally( () => console.log('cleanup') )
