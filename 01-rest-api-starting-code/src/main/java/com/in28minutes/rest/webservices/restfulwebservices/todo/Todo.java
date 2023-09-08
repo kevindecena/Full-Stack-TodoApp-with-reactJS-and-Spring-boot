@@ -10,10 +10,11 @@ import java.time.LocalDate;
 @Entity
 public class Todo {
 
+    //default
     public Todo() {
-
     }
 
+    //constructor with parameters
     public Todo(Integer id, String username, String description, LocalDate targetDate, boolean done) {
         super();
         this.id = id;
